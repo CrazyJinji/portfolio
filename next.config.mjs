@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export', // חובה להסיר או לסמן כהערה שורה זו
-  eslint: { ignoreDuringBuilds: true }, // מומלץ למניעת כשל בבנייה עקב שגיאות ESLint
-  typescript: { ignoreBuildErrors: true } // מומלץ אם יש שגיאות טיפוסים שלא תוקנו
+  // output: 'export', // מוחרג כנדרש עבור תמיכה ב-Route Handlers (API)
+  eslint: { ignoreDuringBuilds: true }, 
+  typescript: { ignoreBuildErrors: true } 
 };
-module.exports = nextConfig;
+
+// ייצוא בתקן ESM
+export default nextConfig;
