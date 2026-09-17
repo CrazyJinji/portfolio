@@ -1,0 +1,46 @@
+[
+  {
+    "id": "lab-device-management",
+    "featured": true,
+    "year": 2026,
+    "demoUrl": "/demo/lab-device-management",
+    "category": "Practical Electronic Engineer Development",
+    "title": {
+      "en": "Laboratory Device Management System",
+      "he": "מערכת לניהול מכשירי מעבדה"
+    },
+    "shortDescription": {
+      "en": "Designed and developed a management system for tracking, maintaining, and managing laboratory testing equipment.",
+      "he": "פיתוח מערכת ייעודית לניהול, מעקב ותחזוקה של ציוד הבדיקה והמכשירים במעבדה."
+    },
+    "technologies": ["TSX", "TypeScript", "React", "System Architecture"],
+    "links": { "github": "", "live": "", "article": "" },
+    "media": { "thumbnail": "/images/projects/lab-management-thumb.jpg", "demoVideo": "" }
+  },
+  {
+  "id": "atlas-prime-real-estate",
+  "demoUrl": "/demo/atlas-prime",
+  "featured": true,
+  "year": 2024,
+  "category": "Software & Web Engineering",
+  "title": {
+    "en": "International Real Estate Platform",
+    "he": "פלטפורמת נדל\"ן בינלאומית (Atlas Prime)"
+  },
+  "shortDescription": {
+    "en": "Developed a multilingual real estate platform (Project currently offline). Showcased as an architectural case study.",
+    "he": "פיתוח פלטפורמת השקעות נדל\"ן תלת-לשונית מבוססת Next.js. (הפרויקט אינו באוויר כעת - מוצג כ-Case Study טכני)."
+  },
+  "technologies": [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "i18n Architecture",
+    "REST API"
+  ],
+  "media": {
+    "thumbnail": "/images/projects/atlas-prime-thumb.jpg",
+    "demoVideo": ""
+  }
+}
+]

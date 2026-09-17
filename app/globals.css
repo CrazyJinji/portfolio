@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 98%;
+    --foreground: 240 10% 10%;
+    --surface: 0 0% 100%;
+    --surface-border: 240 10% 90%;
+    --accent: 221 83% 53%;
+    --accent-hover: 221 83% 45%;
+    --muted: 240 10% 40%;
+  }
+
+  /* אכיפה אבסולוטית למצב Dark */
+  .dark, html.dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --surface: 222 47% 15%;
+    --surface-border: 215 30% 25%;
+    --accent: 217 91% 60%;
+    --accent-hover: 217 91% 70%;
+    --muted: 215 20% 65%;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/demo/atlas-prime/page": "app/demo/atlas-prime/page.js",
+  "/demo/lab-device-management/page": "app/demo/lab-device-management/page.js",
+  "/page": "app/page.js",
+  "/projects/[id]/page": "app/projects/[id]/page.js"
+}

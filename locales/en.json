@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "title": "Electronics & RF Engineer | Practical Electronic Engineer Developer",
+    "subtitle": "Combining deep hardware and RF systems background with advanced software development capabilities.",
+    "cv_he": "Download CV (Hebrew)",
+    "cv_en": "Download CV (English)"
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "hardware": "Hardware & Test Equipment",
+    "programming": "Programming & Frameworks",
+    "domains": "Core Domains"
+  },
+  "projects": {
+    "title": "Selected Projects",
+    "github": "Source Code"
+  },
+  "contactForm": {
+  "name": "Name",
+  "namePlaceholder": "Your name",
+  "email": "Email",
+  "emailPlaceholder": "your@email.com",
+  "subject": "Subject",
+  "subjectPlaceholder": "What's this about?",
+  "message": "Message",
+  "messagePlaceholder": "Tell me about your project or opportunity...",
+  "send": "Send Message",
+  "sending": "Sending..."
+},
+  "contact": {
+    "title": "Contact",
+    "email": "Email",
+    "linkedin": "LinkedIn"
+  }
+}

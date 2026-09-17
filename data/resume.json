@@ -1,0 +1,79 @@
+{
+  "experience": [
+    {
+      "id": "pagarm",
+      "period": "2024 - Present",
+      "role": {
+        "en": "Technician & System Designer",
+        "he": "טכנאי ומתכנן מערכות"
+      },
+      "organization": {
+        "en": "Pagarm Holdings Ltd.",
+        "he": "פאגרם החזקות בע\"מ"
+      },
+      "description": {
+        "en": "Responsible for the planning and design of missile defense systems. Overseeing maintenance operations and conducting field experiments with military personnel.",
+        "he": "תכנון ושירטוט מערכות מיגון נגד טילים. אחזקה, טיפול בתקלות וביצוע ניסויים בתנאי מעבדה ושטח אל מול גורמים צבאיים."
+      }
+    },
+    {
+      "id": "idf-rf",
+      "period": "2019 - 2024",
+      "role": {
+        "en": "RF & Satellite Communication Technician",
+        "he": "טכנאי תקשורת RF ולוויין"
+      },
+      "organization": {
+        "en": "Israel Defense Forces (IDF)",
+        "he": "צה\"ל (שירות קבע)"
+      },
+      "description": {
+        "en": "Diagnosed and repaired RF communication devices and antennas using advanced testing equipment (DVM, oscilloscope, spectrum analyzer). Provided rapid technical response during maritime operations.",
+        "he": "איתור ופתרון תקלות חומרה במכשירי קשר ואנטנות בכלי שייט. קריאת שרטוטים חשמליים ושימוש בצב\"דים מתקדמים. מתן מענה מבצעי מהיר לכלי השייט."
+      }
+    }
+  ],
+  "education": [
+    {
+      "id": "ecom",
+      "period": "2024 - 2025",
+      "degree": {
+        "en": "Penetration Tester Certification",
+        "he": "הסמכת Penetration Tester"
+      },
+      "organization": {
+        "en": "ECOM College",
+        "he": "מכללת ECOM"
+      }
+    },
+    {
+      "id": "naval-pe",
+      "period": "2017 - 2019",
+      "degree": {
+        "en": "Practical Engineering in Electronics, Computer & Control",
+        "he": "הנדסאי אלקטרוניקה, מחשבים ובקרה"
+      },
+      "organization": {
+        "en": "Naval Officers School, Akko",
+        "he": "קציני ים עכו"
+      }
+    }
+  ],
+
+  "skills": [
+    {
+      "category": {
+        "en": "Software & Web Engineering",
+        "he": "הנדסת תוכנה ו-Web"
+      },
+      "items": ["TypeScript", "React / Next.js", "Python", "Automation (Playwright)", "Git"]
+    },
+    {
+      "category": {
+        "en": "Hardware & RF Engineering",
+        "he": "אלקטרוניקה ו-RF"
+      },
+      "items": ["RF Test Equipment", "Spectrum Analyzers", "Signal Generators (AWG)", "Hardware Integration", "PCB Diagnostics"]
+    }
+  ]
+}

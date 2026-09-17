@@ -1,0 +1,9 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/contact/route": "/api/contact",
+  "/demo/atlas-prime/page": "/demo/atlas-prime",
+  "/demo/lab-device-management/page": "/demo/lab-device-management",
+  "/page": "/",
+  "/projects/[id]/page": "/projects/[id]"
+}
