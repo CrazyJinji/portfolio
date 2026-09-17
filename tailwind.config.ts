@@ -16,7 +16,10 @@ const config: Config = {
       colors: {
         background: "hsl(var(--background) / <alpha-value>)",
         foreground: "hsl(var(--foreground) / <alpha-value>)",
-        surface: "hsl(var(--surface) / <alpha-value>)",
+        surface: {
+          DEFAULT: "hsl(var(--surface) / <alpha-value>)",
+          hover: "hsl(var(--surface-hover) / <alpha-value>)",
+        },
         border: "hsl(var(--surface-border) / <alpha-value>)",
         accent: {
           DEFAULT: "hsl(var(--accent) / <alpha-value>)",

@@ -42,7 +42,7 @@ export default function Skills() {
           </h4>
           <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex flex-wrap gap-2">
             {SKILLS_DATA.hardware.map(tech => (
-              <motion.span variants={item} key={tech} className="px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-background border border-border/60 text-muted-foreground shadow-sm">
+              <motion.span variants={item} key={tech} className="px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-background border border-border/60 text-muted shadow-sm">
                 {tech}
               </motion.span>
             ))}
@@ -59,7 +59,7 @@ export default function Skills() {
           </h4>
           <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex flex-wrap gap-2">
             {SKILLS_DATA.programming.map(tech => (
-              <motion.span variants={item} key={tech} className="px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-background border border-border/60 text-muted-foreground shadow-sm">
+              <motion.span variants={item} key={tech} className="px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-background border border-border/60 text-muted shadow-sm">
                 {tech}
               </motion.span>
             ))}
@@ -76,7 +76,7 @@ export default function Skills() {
           </h4>
           <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex flex-wrap gap-2">
             {SKILLS_DATA.domains.map(tech => (
-              <motion.span variants={item} key={tech} className="px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-background border border-border/60 text-muted-foreground shadow-sm">
+              <motion.span variants={item} key={tech} className="px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-background border border-border/60 text-muted shadow-sm">
                 {tech}
               </motion.span>
             ))}
