@@ -20,14 +20,36 @@ export const metadata: Metadata = {
   description: 'Portfolio and Resume of Leon Krasnik',
 };
 
+/**
+ * רץ סינכרונית לפני ה-paint הראשון ומיישם את ההעדפות השמורות על תגית ה-html.
+ * בלעדיו היה flash של ערכת נושא ושל כיוון כתיבה שגויים עד שה-React עולה.
+ * ה-markup מהשרת נשאר he/rtl, ולכן צריך suppressHydrationWarning על ה-html.
+ */
+const THEME_INIT_SCRIPT = `(function(){try{
+var r=document.documentElement;
+var t=localStorage.getItem('theme')||'dark';
+var l=localStorage.getItem('lang')||'he';
+if(t==='dark'){r.classList.add('dark')}else{r.classList.remove('dark')}
+r.setAttribute('lang',l);
+r.setAttribute('dir',l==='he'?'rtl':'ltr');
+}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}>
-      <body 
+    <html
+      lang="he"
+      dir="rtl"
+      suppressHydrationWarning
+      className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
+      <body
         suppressHydrationWarning // Inject directive here to bypass extension mutations
         className="font-sans antialiased min-h-screen relative bg-background text-foreground transition-colors duration-300" 
       >

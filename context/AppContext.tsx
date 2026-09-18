@@ -1,6 +1,5 @@
 'use client';
 
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import he from '../locales/he.json';
 import en from '../locales/en.json';
@@ -18,47 +17,49 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-export const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('dark');
-  const [lang, setLang] = useState<Lang>('he');
-  const [mounted, setMounted] = useState(false);
+// ברירות המחדל חייבות להיות זהות לערכים שהשרת מרנדר ולערכים שב-layout.tsx,
+// אחרת הרינדור הראשון בלקוח לא יתאים ל-HTML שהגיע מהשרת.
+const DEFAULT_THEME: Theme = 'dark';
+const DEFAULT_LANG: Lang = 'he';
 
+export const AppProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setTheme] = useState<Theme>(DEFAULT_THEME);
+  const [lang, setLang] = useState<Lang>(DEFAULT_LANG);
+  const [hydrated, setHydrated] = useState(false);
+
+  // שלב 1: קריאת ההעדפות השמורות אחרי ההידרציה.
+  // הרינדור הראשון בלקוח זהה לזה של השרת, ולכן אין hydration mismatch.
+  // הסקריפט ב-layout.tsx כבר יישם את הערכים האלה על תגית ה-html לפני ה-paint,
+  // אז מה שקורה כאן הוא רק סנכרון של ה-state של React למה שכבר על המסך.
   useEffect(() => {
-    // אתחול צד לקוח למניעת Hydration mismatch
-    const storedTheme = localStorage.getItem('theme') as Theme || 'dark';
-    const storedLang = localStorage.getItem('lang') as Lang || 'he';
-    setTheme(storedTheme);
-    setLang(storedLang);
-    setMounted(true);
+    const storedTheme = localStorage.getItem('theme') as Theme | null;
+    const storedLang = localStorage.getItem('lang') as Lang | null;
+
+    if (storedTheme === 'light' || storedTheme === 'dark') setTheme(storedTheme);
+    if (storedLang === 'he' || storedLang === 'en') setLang(storedLang);
+
+    setHydrated(true);
   }, []);
 
+  // שלב 2: החלה ושמירה. מדלג על המעבר הראשון כדי לא לדרוס
+  // את הערך השמור לפני שהספקנו לקרוא אותו.
   useEffect(() => {
-    if (!mounted) return;
-    
+    if (!hydrated) return;
+
     const root = document.documentElement;
-    
-    // ניהול Theme
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
+
+    root.classList.toggle('dark', theme === 'dark');
     localStorage.setItem('theme', theme);
 
-    // ניהול i18n ו-RTL/LTR
     root.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
     root.setAttribute('lang', lang);
     localStorage.setItem('lang', lang);
+  }, [theme, lang, hydrated]);
 
-  }, [theme, lang, mounted]);
-
- const toggleTheme = () => setTheme((prev: Theme) => (prev === 'light' ? 'dark' : 'light'));
- const toggleLang = () => setLang((prev: Lang) => (prev === 'he' ? 'en' : 'he'));
+  const toggleTheme = () => setTheme((prev: Theme) => (prev === 'light' ? 'dark' : 'light'));
+  const toggleLang = () => setLang((prev: Lang) => (prev === 'he' ? 'en' : 'he'));
 
   const t = lang === 'he' ? he : en;
-
-  // מניעת רינדור עד לסיום טעינת ההעדפות בלקוח
-  if (!mounted) return <div className="min-h-screen bg-slate-900" />;
 
   return (
     <AppContext.Provider value={{ theme, lang, t, toggleTheme, toggleLang }}>

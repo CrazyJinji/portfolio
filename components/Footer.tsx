@@ -4,7 +4,7 @@ import { useAppContext } from '@/context/AppContext';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
-  const { t, lang } = useAppContext();
+  const { t } = useAppContext();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -14,7 +14,7 @@ export default function Footer() {
         {/* קרדיט וזכויות */}
         <div className="flex flex-col items-center md:items-start gap-2 text-muted text-sm font-mono">
           <p>© {currentYear} Leon Krasnik.</p>
-          <p>{lang === 'he' ? 'כל הזכויות שמורות.' : 'All rights reserved.'}</p>
+          <p>{t.footer.rights}</p>
         </div>
 
         {/* קישורים ויצירת קשר */}

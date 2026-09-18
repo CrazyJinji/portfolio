@@ -5,7 +5,7 @@ import { motion, Variants } from 'framer-motion';
 import resumeData from '@/data/resume.json';
 
 export default function Experience() {
-  const { lang } = useAppContext();
+  const { lang, t } = useAppContext();
   
   // Type Assertion מרוכז למניעת קוד כפול בתוך פונקציית הרינדור
   const currentLang = lang as 'he' | 'en';
@@ -35,7 +35,7 @@ export default function Experience() {
         <div>
           <div className="flex items-center gap-4 mb-10">
             <h3 className="text-3xl font-bold text-foreground font-mono tracking-tight">
-              {currentLang === 'he' ? 'ניסיון תעסוקתי' : 'Experience'}
+              {t.experience.title}
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-border/80 to-transparent" />
           </div>
@@ -73,7 +73,7 @@ export default function Experience() {
         <div>
           <div className="flex items-center gap-4 mb-10">
             <h3 className="text-3xl font-bold text-foreground font-mono tracking-tight">
-              {currentLang === 'he' ? 'השכלה והכשרה' : 'Education'}
+              {t.experience.educationTitle}
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-border/80 to-transparent" />
           </div>

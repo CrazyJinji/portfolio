@@ -10,7 +10,7 @@ interface ProjectClientProps {
 }
 
 export default function ProjectClient({ project }: ProjectClientProps) {
-  const { lang } = useAppContext();
+  const { lang, t } = useAppContext();
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-16 min-h-screen">
@@ -18,7 +18,8 @@ export default function ProjectClient({ project }: ProjectClientProps) {
         href="/#projects" 
         className="inline-flex items-center text-accent hover:text-accent-hover font-mono text-sm mb-12 transition-colors"
       >
-        {lang === 'he' ? '← חזרה לפרויקטים' : '← Back to Projects'}
+        <span aria-hidden="true" className="rtl:rotate-180 inline-block me-1">&larr;</span>
+        {t.projects.back}
       </Link>
 
       <motion.article 
@@ -68,7 +69,7 @@ export default function ProjectClient({ project }: ProjectClientProps) {
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
       </svg>
-      {lang === 'he' ? 'צפייה בדמו' : 'Live Demo'}
+      {t.projects.liveDemo}
     </a>
   </motion.div>
 )}

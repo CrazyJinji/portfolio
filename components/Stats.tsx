@@ -26,12 +26,12 @@ function Counter({ from, to }: { from: number; to: number }) {
 }
 
 export default function Stats() {
-  const { lang } = useAppContext();
-  
+  const { t } = useAppContext();
+
   const stats = [
-    { value: 7, label: lang === 'he' ? 'שנות ניסיון במערכות מורכבות' : 'Years of System Experience' },
-    { value: 3, label: lang === 'he' ? 'פרויקטי חומרה ותוכנה' : 'Hardware & Software Projects' },
-    { value: 3, label: lang === 'he' ? 'שפות תכנות עיקריות' : 'Core Programming Languages' }
+    { value: 7, label: t.stats.years },
+    { value: 3, label: t.stats.projects },
+    { value: 3, label: t.stats.languages }
   ];
 
   return (

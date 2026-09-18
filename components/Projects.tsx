@@ -25,13 +25,14 @@ const itemVariants: Variants = {
 
 export default function Projects() {
   const { t, lang } = useAppContext();
+  const currentLang = lang as 'he' | 'en';
 
   // הגדרת ה-ID "projects" ברמת השורש קריטית לעגינת הגלילה (Anchor Navigation)
   // השימוש ב-scroll-mt-24 מונע הסתרה של הכותרת על ידי ה-Navbar הצף
   return (
     <section id="projects" className="py-16 border-t border-border/30 scroll-mt-24">
       <h3 className="text-3xl font-bold mb-8 text-foreground">
-        {t.projects.title || (lang === 'he' ? 'פרויקטים נבחרים' : 'Selected Projects')}
+        {t.projects.title}
       </h3>
       
       <motion.div 
@@ -57,11 +58,11 @@ export default function Projects() {
               
               <h4 className="relative z-10 text-xl font-bold text-foreground mb-3">
   {/* שימוש ב-Assertion ישיר של שפות הפרויקט במקום typeof */}
-  {project.title?.[lang as 'he' | 'en'] || 'פרויקט ללא שם'}
+  {project.title?.[currentLang] || t.projects.untitled}
 </h4>
 
 <p className="relative z-10 text-muted mb-6 flex-grow leading-relaxed">
-  {project.shortDescription?.[lang as 'he' | 'en'] || 'תיאור חסר.'}
+  {project.shortDescription?.[currentLang] || t.projects.noDescription}
 </p>
               
               <div className="relative z-10 flex flex-wrap gap-2 mt-auto">

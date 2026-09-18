@@ -56,7 +56,7 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="name" className={labelClasses}>
-                {t.contactForm?.name || (lang === 'he' ? 'שם' : 'Name')}
+                {t.contactForm.name}
               </label>
               <input 
                 type="text" 
@@ -65,13 +65,13 @@ export default function ContactForm() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder={t.contactForm?.namePlaceholder || 'Your name'} 
+                placeholder={t.contactForm.namePlaceholder} 
                 className={inputClasses} 
               />
             </div>
             <div>
               <label htmlFor="email" className={labelClasses}>
-                {t.contactForm?.email || (lang === 'he' ? 'דוא"ל' : 'Email')}
+                {t.contactForm.email}
               </label>
               <input 
                 type="email" 
@@ -81,7 +81,7 @@ export default function ContactForm() {
                 dir="ltr" 
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder={t.contactForm?.emailPlaceholder || 'your@email.com'} 
+                placeholder={t.contactForm.emailPlaceholder} 
                 className={`${inputClasses} ${lang === 'he' ? 'text-end placeholder:text-end' : ''}`} 
               />
             </div>
@@ -90,7 +90,7 @@ export default function ContactForm() {
           {/* שורה 2: נושא */}
           <div>
             <label htmlFor="subject" className={labelClasses}>
-              {t.contactForm?.subject || (lang === 'he' ? 'נושא' : 'Subject')}
+              {t.contactForm.subject}
             </label>
             <input 
               type="text" 
@@ -99,7 +99,7 @@ export default function ContactForm() {
               required
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-              placeholder={t.contactForm?.subjectPlaceholder || "What's this about?"} 
+              placeholder={t.contactForm.subjectPlaceholder} 
               className={inputClasses} 
             />
           </div>
@@ -107,7 +107,7 @@ export default function ContactForm() {
           {/* שורה 3: תוכן ההודעה */}
           <div>
             <label htmlFor="message" className={labelClasses}>
-              {t.contactForm?.message || (lang === 'he' ? 'הודעה' : 'Message')}
+              {t.contactForm.message}
             </label>
             <textarea 
               id="message" 
@@ -116,7 +116,7 @@ export default function ContactForm() {
               required
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder={t.contactForm?.messagePlaceholder || "Tell me about your project..."} 
+              placeholder={t.contactForm.messagePlaceholder} 
               className={`${inputClasses} resize-y min-h-[120px]`} 
             ></textarea>
           </div>
@@ -142,10 +142,10 @@ export default function ContactForm() {
                 </svg>
               )}
 
-              {status === 'loading' ? (t.contactForm?.sending || (lang === 'he' ? 'שולח...' : 'Sending...')) : 
-               status === 'success' ? (lang === 'he' ? 'ההודעה נשלחה' : 'Message Sent') :
-               status === 'error' ? (lang === 'he' ? 'שגיאה בשליחה' : 'Error Sending') :
-               (t.contactForm?.send || (lang === 'he' ? 'שליחת הודעה' : 'Send Message'))}
+              {status === 'loading' ? t.contactForm.sending :
+               status === 'success' ? t.contactForm.sent :
+               status === 'error' ? t.contactForm.error :
+               t.contactForm.send}
             </motion.button>
           </div>
 

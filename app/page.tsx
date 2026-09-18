@@ -4,12 +4,12 @@ import Hero from '@/components/Hero';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
-import ProjectDemo from '@/components/ProjectDemo';
 import Footer from '@/components/Footer';
 import Stats from '@/components/Stats';
 import Contact from '@/components/Contact';
 import ContactForm from '@/components/ContactForm';
 import { useAppContext } from '@/context/AppContext';
+import { Moon, Sun } from 'lucide-react';
 
 export default function Home() {
   const { toggleLang, toggleTheme, lang, theme, t } = useAppContext();
@@ -22,7 +22,7 @@ export default function Home() {
          <div className="flex items-center">
   <a 
     href="/" 
-    aria-label={lang === 'he' ? 'עמוד הבית' : 'Home'}
+    aria-label={t.nav.home}
     className="block transition-transform hover:scale-105 active:scale-95 duration-200"
   >
     <img 
@@ -38,7 +38,7 @@ export default function Home() {
             <button 
               onClick={toggleLang}
               className="px-3 py-1 rounded-md bg-surface border border-border/50 font-medium text-sm transition-colors hover:bg-surface-hover"
-              aria-label="Toggle Language"
+              aria-label={t.nav.toggleLanguage}
             >
               {lang === 'he' ? 'EN' : 'עב'}
             </button>
@@ -48,9 +48,9 @@ export default function Home() {
             <button 
               onClick={toggleTheme}
               className="p-2 rounded-md bg-surface border border-border/50 text-lg transition-colors hover:bg-surface-hover cursor-pointer flex items-center justify-center"
-              aria-label="Toggle Theme"
+              aria-label={t.nav.toggleTheme}
             >
-              {theme === 'dark' ? '☀️' : '🌙'}
+              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
           </div>

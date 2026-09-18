@@ -1,35 +1,65 @@
 {
+  "nav": {
+    "home": "עמוד הבית",
+    "toggleLanguage": "מעבר לאנגלית",
+    "toggleTheme": "החלפת ערכת נושא"
+  },
   "hero": {
-    "title": "הנדסאי אלקטרוניקה וRF ו-RF",
-    "subtitle": "משלב רקע עמוק בחומרה ומערכות RF עם יכולות פיתוח תוכנה מתקדמות.",
+    "badge": "זמין לפרויקטים חדשים",
+    "titleLine1": "הנדסאי אלקטרוניקה",
+    "titleLine2": "ומערכות RF.",
+    "subtitle": "אני לאון קרסניק. מגשר על הפער שבין חומרה פיזית לארכיטקטורת תוכנה, תוך יצירת פתרונות מהירים, יציבים ומבוססי נתונים.",
+    "cta": "צפייה בפרויקטים",
     "cv_he": "הורד קורות חיים (עברית)",
-    "cv_en": "הורד קורות חיים (English)"
+    "cv_en": "הורד קורות חיים (English)",
+    "tagStack": "TypeScript / Python",
+    "tagDomain": "RF Engineering"
+  },
+  "stats": {
+    "years": "שנות ניסיון במערכות מורכבות",
+    "projects": "פרויקטי חומרה ותוכנה",
+    "languages": "שפות תכנות עיקריות"
   },
   "skills": {
     "title": "יכולות טכניות",
     "hardware": "חומרה וציוד בדיקה",
-    "programming": "שפות פיתוח ",
+    "programming": "שפות פיתוח",
     "domains": "תחומי התמחות"
+  },
+  "experience": {
+    "title": "ניסיון תעסוקתי",
+    "educationTitle": "השכלה והכשרה"
   },
   "projects": {
     "title": "פרויקטים נבחרים",
-    "github": "קוד מקור"
+    "github": "קוד מקור",
+    "back": "חזרה לפרויקטים",
+    "liveDemo": "צפייה בדמו",
+    "untitled": "פרויקט ללא שם",
+    "noDescription": "תיאור חסר."
   },
   "contactForm": {
-  "name": "שם",
-  "namePlaceholder": "השם שלך",
-  "email": "דוא\"ל",
-  "emailPlaceholder": "your@email.com",
-  "subject": "נושא",
-  "subjectPlaceholder": "באיזה נושא הפנייה?",
-  "message": "הודעה",
-  "messagePlaceholder": "ספר/י לי על הפרויקט או ההזדמנות...",
-  "send": "שליחת הודעה",
-  "sending": "שולח..."
-},
-  "contact": {
-    "title": "צור קשר",
+    "name": "שם",
+    "namePlaceholder": "השם שלך",
     "email": "דוא\"ל",
-    "linkedin": "לינקדאין"
+    "emailPlaceholder": "your@email.com",
+    "subject": "נושא",
+    "subjectPlaceholder": "באיזה נושא הפנייה?",
+    "message": "הודעה",
+    "messagePlaceholder": "ספר/י לי על הפרויקט או ההזדמנות...",
+    "send": "שליחת הודעה",
+    "sending": "שולח...",
+    "sent": "ההודעה נשלחה",
+    "error": "שגיאה בשליחה"
+  },
+  "contact": {
+    "title": "בואו נדבר",
+    "lead": "זמין להזדמנויות חדשות בתחומי פיתוח תוכנה, אלקטרוניקה ושילוב מערכות.",
+    "email": "דוא\"ל",
+    "linkedin": "לינקדאין",
+    "github": "קוד מקור"
+  },
+  "footer": {
+    "rights": "כל הזכויות שמורות."
   }
 }

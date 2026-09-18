@@ -36,9 +36,7 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
             </span>
             <span className="text-sm font-mono font-semibold text-foreground/90">
-              {lang === 'he' 
-                ? 'זמין לפרויקטים חדשים' 
-                : 'Available for new projects'}
+              {t.hero.badge}
             </span>
           </motion.div>
 
@@ -48,12 +46,10 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-6"
           >
-            <span className="text-foreground">
-              {lang === 'he' ? 'הנדסאי אלקטרוניקה' : 'Practical Electronic Engineer &'}
-            </span>
+            <span className="text-foreground">{t.hero.titleLine1}</span>
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-blue-500">
-              {lang === 'he' ? 'ומערכות RF.' : 'RF Systems.'}
+              {t.hero.titleLine2}
             </span>
           </motion.h1>
 
@@ -63,9 +59,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-muted max-w-lg leading-relaxed mb-10"
           >
-            {lang === 'he' 
-              ? 'אני לאון קרסניק. מגשר על הפער שבין חומרה פיזית לארכיטקטורת תוכנה, תוך יצירת פתרונות מהירים, יציבים ומבוססי נתונים.' 
-              : "I'm Leon Krasnik. Bridging the gap between physical hardware and digital architecture, creating fast, robust, and data-driven solutions."}
+            {t.hero.subtitle}
           </motion.p>
 
           <motion.div 
@@ -78,7 +72,7 @@ export default function Hero() {
               href="#projects" 
               className="group flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background font-bold hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-foreground/20"
             >
-              {t.projects.title || (lang === 'he' ? 'צפייה בפרויקטים' : 'View Projects')}
+              {t.hero.cta}
               <svg className="w-5 h-5 rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
@@ -132,7 +126,7 @@ export default function Hero() {
     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
     className="absolute top-10 right-10 px-4 py-2 bg-surface/90 backdrop-blur-md border border-border rounded-xl shadow-lg font-mono text-xs text-foreground"
   >
-    TypeScript / Python
+    {t.hero.tagStack}
   </motion.div>
   
   <motion.div 
@@ -140,7 +134,7 @@ export default function Hero() {
     transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
     className="absolute bottom-10 left-10 px-4 py-2 bg-surface/90 backdrop-blur-md border border-border rounded-xl shadow-lg font-mono text-xs text-foreground"
   >
-    RF Engineering
+    {t.hero.tagDomain}
   </motion.div>
 </motion.div>
       </div>

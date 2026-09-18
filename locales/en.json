@@ -1,9 +1,24 @@
 {
+  "nav": {
+    "home": "Home",
+    "toggleLanguage": "Switch to Hebrew",
+    "toggleTheme": "Toggle theme"
+  },
   "hero": {
-    "title": "Electronics & RF Engineer | Practical Electronic Engineer Developer",
-    "subtitle": "Combining deep hardware and RF systems background with advanced software development capabilities.",
+    "badge": "Available for new projects",
+    "titleLine1": "Practical Electronic Engineer &",
+    "titleLine2": "RF Systems.",
+    "subtitle": "I'm Leon Krasnik. Bridging the gap between physical hardware and digital architecture, creating fast, robust, and data-driven solutions.",
+    "cta": "View Projects",
     "cv_he": "Download CV (Hebrew)",
-    "cv_en": "Download CV (English)"
+    "cv_en": "Download CV (English)",
+    "tagStack": "TypeScript / Python",
+    "tagDomain": "RF Engineering"
+  },
+  "stats": {
+    "years": "Years of System Experience",
+    "projects": "Hardware & Software Projects",
+    "languages": "Core Programming Languages"
   },
   "skills": {
     "title": "Technical Skills",
@@ -11,25 +26,40 @@
     "programming": "Programming & Frameworks",
     "domains": "Core Domains"
   },
+  "experience": {
+    "title": "Experience",
+    "educationTitle": "Education"
+  },
   "projects": {
     "title": "Selected Projects",
-    "github": "Source Code"
+    "github": "Source Code",
+    "back": "Back to Projects",
+    "liveDemo": "Live Demo",
+    "untitled": "Untitled project",
+    "noDescription": "No description available."
   },
   "contactForm": {
-  "name": "Name",
-  "namePlaceholder": "Your name",
-  "email": "Email",
-  "emailPlaceholder": "your@email.com",
-  "subject": "Subject",
-  "subjectPlaceholder": "What's this about?",
-  "message": "Message",
-  "messagePlaceholder": "Tell me about your project or opportunity...",
-  "send": "Send Message",
-  "sending": "Sending..."
-},
-  "contact": {
-    "title": "Contact",
+    "name": "Name",
+    "namePlaceholder": "Your name",
     "email": "Email",
-    "linkedin": "LinkedIn"
+    "emailPlaceholder": "your@email.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What's this about?",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project or opportunity...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "sent": "Message Sent",
+    "error": "Error Sending"
+  },
+  "contact": {
+    "title": "Let's Talk",
+    "lead": "I'm available for new opportunities bridging software, electronics, and system integration.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "Source Code"
+  },
+  "footer": {
+    "rights": "All rights reserved."
   }
 }
