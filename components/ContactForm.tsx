@@ -7,33 +7,40 @@ import { motion } from 'framer-motion';
 export default function ContactForm() {
   const { t, lang } = useAppContext();
   
-  // ניהול הנתונים והסטטוס (Controlled Component)
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const EMPTY_FORM = { name: '', email: '', subject: '', message: '', company: '' };
 
-  // לוגיקת השליחה מול ה-API האמיתי
+  // ניהול הנתונים והסטטוס (Controlled Component).
+  // company הוא ה-honeypot: שדה מוסתר שרק בוטים ממלאים.
+  const [formData, setFormData] = useState(EMPTY_FORM);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'rateLimited'>('idle');
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
-    
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // אנו מעבירים את ה-subject גם כשדה phone כדי לתמוך בארכיטקטורת ה-API שבנינו
-        body: JSON.stringify({ ...formData, phone: formData.subject }), 
+        body: JSON.stringify(formData),
       });
 
-      if (!res.ok) throw new Error('Network failure');
-      
+      if (res.status === 429) {
+        setStatus('rateLimited');
+        setTimeout(() => setStatus('idle'), 6000);
+        return;
+      }
+
+      if (!res.ok) throw new Error(`Request failed with ${res.status}`);
+
       setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' }); // איפוס
-      
-      setTimeout(() => setStatus('idle'), 3000); // חזרה למצב התחלתי
+      setFormData(EMPTY_FORM);
+
+      setTimeout(() => setStatus('idle'), 3000);
     } catch (error) {
       console.error('Submission error:', error);
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 3000); // איפוס השגיאה לאחר 3 שניות
+      setTimeout(() => setStatus('idle'), 3000);
     }
   };
 
@@ -50,7 +57,7 @@ export default function ContactForm() {
         transition={{ duration: 0.5 }}
         className="bg-surface/30 backdrop-blur-md border border-border/60 rounded-3xl p-8 shadow-lg"
       >
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6 relative">
           
           {/* שורה 1: שם ודוא"ל (גריד מפוצל במסכים רחבים) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -121,6 +128,24 @@ export default function ContactForm() {
             ></textarea>
           </div>
 
+          {/*
+            Honeypot. מוסתר מבני אדם ומקוראי מסך (aria-hidden + tabIndex -1),
+            אבל בוט שממלא כל input בטופס ייפול עליו.
+            להסתיר עם hidden או display:none פחות אפקטיבי, כי בוטים מדלגים על אלה.
+          */}
+          <div className="absolute w-px h-px -m-px overflow-hidden" aria-hidden="true">
+            <label htmlFor="company">Company</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              value={formData.company}
+              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+            />
+          </div>
+
           {/* כפתור שליחה */}
           <div className="pt-2">
             <motion.button
@@ -134,7 +159,7 @@ export default function ContactForm() {
                 <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
               ) : status === 'success' ? (
                 <span>✔️</span>
-              ) : status === 'error' ? (
+              ) : status === 'error' || status === 'rateLimited' ? (
                 <span>❌</span>
               ) : (
                 <svg className="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -144,9 +169,17 @@ export default function ContactForm() {
 
               {status === 'loading' ? t.contactForm.sending :
                status === 'success' ? t.contactForm.sent :
+               status === 'rateLimited' ? t.contactForm.tooMany :
                status === 'error' ? t.contactForm.error :
                t.contactForm.send}
             </motion.button>
+
+            {/* הודעת סטטוס לקוראי מסך, כי שינוי טקסט על הכפתור לבדו לא מוכרז */}
+            <p role="status" aria-live="polite" className="sr-only">
+              {status === 'success' ? t.contactForm.sent :
+               status === 'rateLimited' ? t.contactForm.tooMany :
+               status === 'error' ? t.contactForm.error : ''}
+            </p>
           </div>
 
         </form>

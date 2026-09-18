@@ -48,3 +48,29 @@
     background-color: hsl(var(--muted));
   }
 }
+
+/*
+ * כיבוד prefers-reduced-motion.
+ *
+ * זו רשת הביטחון ברמת ה-CSS: היא תופסת את מחלקות animate-* של Tailwind
+ * (animate-ping, animate-spin), את scroll-smooth ואת מעברי ה-transition.
+ * אנימציות framer-motion לא מגיעות דרך CSS ולכן מטופלות בנפרד
+ * עם useReducedMotion בקומפוננטות.
+ *
+ * ה-animation-iteration-count מוגדר ל-1 ולא ל-none כדי שספינר הטעינה
+ * בטופס עדיין יראה שמשהו קורה, במקום להיעלם לגמרי.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

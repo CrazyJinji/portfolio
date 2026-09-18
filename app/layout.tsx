@@ -2,6 +2,7 @@ import { AppProvider } from '@/context/AppContext';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from '@/lib/site';
 
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -16,8 +17,49 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Leon Krasnik - Practical Electronic Engineer & RF Engineer',
-  description: 'Portfolio and Resume of Leon Krasnik',
+  // metadataBase הוא מה שהופך נתיב יחסי כאן לכתובת מלאה.
+  // בלעדיו Next מזהיר בבילד ותגיות ה-OG יוצאות שבורות.
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  keywords: [
+    'Leon Krasnik',
+    'לאון קרסניק',
+    'הנדסאי אלקטרוניקה',
+    'RF',
+    'RF engineer',
+    'satellite communication',
+    'system design',
+    'Next.js',
+    'TypeScript',
+    'portfolio',
+  ],
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'profile',
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: '/',
+    locale: 'he_IL',
+    alternateLocale: ['en_US'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 };
 
 /**

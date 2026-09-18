@@ -50,7 +50,8 @@
     "send": "Send Message",
     "sending": "Sending...",
     "sent": "Message Sent",
-    "error": "Error Sending"
+    "error": "Error Sending",
+    "tooMany": "Too many submissions, try again in a few minutes"
   },
   "contact": {
     "title": "Let's Talk",
@@ -61,5 +62,10 @@
   },
   "footer": {
     "rights": "All rights reserved."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "lead": "The link is wrong, or the page was removed.",
+    "back": "Back to home"
   }
 }

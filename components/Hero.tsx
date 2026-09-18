@@ -1,21 +1,29 @@
 'use client';
 
 import { useAppContext } from '@/context/AppContext';
-import { motion, type TargetAndTransition } from 'framer-motion';
+import { motion, useReducedMotion, type TargetAndTransition } from 'framer-motion';
 import Image from 'next/image';
 
 export default function Hero() {
   const { t, lang } = useAppContext();
 
-  // הגדרת אנימציית הריחוף הרציף לאלמנט הוויזואלי
-  const floatingAnimation: TargetAndTransition = {
-    y: ['-10px', '10px', '-10px'],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    },
-  };
+  // מכבד prefers-reduced-motion. אנימציות framer-motion אינן מושפעות
+  // מה-media query שב-globals.css, ולכן צריך להשתיק אותן כאן במפורש.
+  const reduceMotion = useReducedMotion();
+
+  // הגדרת אנימציות הריחוף הרציף לאלמנטים הוויזואליים
+  const float = (
+    keyframes: string[],
+    duration: number
+  ): TargetAndTransition | undefined =>
+    reduceMotion
+      ? undefined
+      : {
+          y: keyframes,
+          transition: { duration, repeat: Infinity, ease: 'easeInOut' },
+        };
+
+  const floatingAnimation = float(['-10px', '10px', '-10px'], 6);
 
   return (
     <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 min-h-[85vh] flex items-center">
@@ -32,7 +40,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface/80 border border-border/80 mb-8 backdrop-blur-md shadow-sm"
           >
             <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
             </span>
             <span className="text-sm font-mono font-semibold text-foreground/90">
@@ -122,16 +130,14 @@ export default function Hero() {
 
   {/* תגיות צפות סביב האלמנט הוויזואלי ליצירת עומק */}
   <motion.div 
-    animate={{ y: ["10px", "-10px", "10px"] }} 
-    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+    animate={float(["10px", "-10px", "10px"], 5)}
     className="absolute top-10 right-10 px-4 py-2 bg-surface/90 backdrop-blur-md border border-border rounded-xl shadow-lg font-mono text-xs text-foreground"
   >
     {t.hero.tagStack}
   </motion.div>
   
   <motion.div 
-    animate={{ y: ["-15px", "15px", "-15px"] }} 
-    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+    animate={float(["-15px", "15px", "-15px"], 7)}
     className="absolute bottom-10 left-10 px-4 py-2 bg-surface/90 backdrop-blur-md border border-border rounded-xl shadow-lg font-mono text-xs text-foreground"
   >
     {t.hero.tagDomain}
